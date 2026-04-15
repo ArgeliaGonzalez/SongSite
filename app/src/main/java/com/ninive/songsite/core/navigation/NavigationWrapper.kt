@@ -1,0 +1,22 @@
+package com.ninive.songsite.core.navigation
+
+import androidx.compose.runtime.Composable
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.rememberNavController
+
+@Composable
+fun NavigationWrapper (
+    navGraphs: Set<FeatureNavGraph>,
+    startDestination: Any = Login
+) {
+    val navController = rememberNavController()
+
+    NavHost(
+        navController = navController,
+        startDestination = startDestination
+    ) {
+        navGraphs.forEach { graph ->
+            graph.registerGraph(this, navController)
+        }
+    }
+}

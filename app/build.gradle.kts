@@ -1,6 +1,11 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.secrets.gradle)
+    // Activa Hilt y KSP
+    alias(libs.plugins.devtools.ksp)
+    alias(libs.plugins.hilt.android)
 }
 
 android {
@@ -46,6 +51,26 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.compose.ui.text.google.fonts)
+    implementation(libs.androidx.compose.material.icons.extended)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)       // viewModel()
+    implementation(libs.io.coil.kt.coil.compose)
+
+    // Navigation
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.kotlinx.serialization.json)
+
+    // Retrofit & OkHttp
+    implementation(libs.retrofit.core)
+    implementation(libs.retrofit.gson)
+    // Lifecycle ViewModel Compose
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    // Hilt
+    implementation(libs.hilt.android)
+    implementation(libs.hilt.navigation.compose)
+    implementation(libs.androidx.datastore.preferences)
+    ksp(libs.hilt.compiler)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
