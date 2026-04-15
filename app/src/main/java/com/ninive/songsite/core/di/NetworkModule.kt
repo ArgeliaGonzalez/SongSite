@@ -1,6 +1,6 @@
-package com.alejandra.chiapart.core.di
+package com.ninive.songsite.core.di
 
-import com.alejandra.chiapart.core.network.inteceptor.AuthInterceptor
+import com.ninive.songsite.core.network.inteceptor.AuthInterceptor
 import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides

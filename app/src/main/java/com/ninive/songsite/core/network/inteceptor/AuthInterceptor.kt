@@ -1,6 +1,6 @@
-package com.alejandra.chiapart.core.network.inteceptor
+package com.ninive.songsite.core.network.inteceptor
 
-import com.alejandra.chiapart.core.storage.TokenProvider
+import com.ninive.songsite.core.storage.TokenProvider
 import okhttp3.Interceptor
 import okhttp3.Response
 import javax.inject.Inject
