@@ -20,6 +20,7 @@ data class SongsUiState(
 
     val editTitle: String = "",
 
+    val isLoadingArtists: Boolean = false,
     val availableArtists: List<Artist> = emptyList(),
     val selectedArtist: Artist? = null,
     val catalogArtistError: String? = null,
@@ -29,7 +30,9 @@ data class SongsUiState(
     val selectedAlbum: Album? = null,
     val catalogAlbumError: String? = null,
 
+    // ── Add form: title field ────────────────────────────────────────────────
     val addTitle: String = "",
 
+    // ── Operation feedback ───────────────────────────────────────────────────
     val operationSuccess: String? = null
 )
