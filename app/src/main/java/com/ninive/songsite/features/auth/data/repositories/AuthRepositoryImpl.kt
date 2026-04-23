@@ -1,5 +1,6 @@
 package com.ninive.songsite.features.auth.data.repositories
 
+import android.util.Log
 import com.ninive.songsite.features.auth.data.datasources.remote.api.AuthApi
 import com.ninive.songsite.features.auth.data.datasources.remote.mapper.loginToDomain
 import com.ninive.songsite.features.auth.data.datasources.remote.mapper.registerToDomain
@@ -15,11 +16,13 @@ class AuthRepositoryImpl @Inject constructor(
 ) : AuthRepository {
     override suspend fun register(request: RegisterRequest): RegisterResponse {
         val response = api.register(request)
+        Log.d("AuthRepositoryImpl", "Register response: $response")
         return response.registerToDomain()
     }
 
     override suspend fun login(request: LoginRequest): LoginResponse {
         val response = api.login(request)
+        Log.d("AuthRepositoryImpl", "Login response: $response")
         return response.loginToDomain()
     }
 }
