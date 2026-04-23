@@ -17,18 +17,6 @@ import com.ninive.songsite.features.songs.domain.entities.Album
 import com.ninive.songsite.features.songs.domain.entities.Artist
 import com.ninive.songsite.features.songs.presentation.screens.SongsUiState
 
-/**
- * Modal dialog for creating a new song.
- *
- * Implements the cascade selection UX:
- * 1. User types the song title.
- * 2. User picks an Artist (triggers album loading in the ViewModel).
- * 3. Album dropdown becomes enabled only after a valid artist is selected.
- * 4. Confirm button is active only when all three required fields are set.
- *
- * Each selector (title field, artist dropdown, album dropdown) is a separate
- * component satisfying the Single Responsibility Principle.
- */
 @Composable
 fun AddSongDialog(
     uiState: SongsUiState,
@@ -65,7 +53,6 @@ fun AddSongDialog(
                     modifier = Modifier.fillMaxWidth()
                 )
 
-                // ── Artist dropdown (cascade step 1) ──────────────────────────
                 ArtistDropdown(
                     artists = uiState.availableArtists,
                     selectedArtist = uiState.selectedArtist,
@@ -74,7 +61,6 @@ fun AddSongDialog(
                     onArtistSelected = onArtistSelected
                 )
 
-                // ── Album dropdown (cascade step 2 — disabled until artist set) ─
                 AlbumDropdown(
                     albums = uiState.availableAlbums,
                     selectedAlbum = uiState.selectedAlbum,

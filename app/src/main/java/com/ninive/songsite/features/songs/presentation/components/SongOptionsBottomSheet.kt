@@ -24,10 +24,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.ninive.songsite.features.songs.domain.entities.Song
 
-/**
- * Bottom sheet displayed when the user taps the options button on a song.
- * Provides "Editar" and "Eliminar" actions.
- */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SongOptionsBottomSheet(

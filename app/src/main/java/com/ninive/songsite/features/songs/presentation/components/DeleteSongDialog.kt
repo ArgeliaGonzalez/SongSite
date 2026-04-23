@@ -7,9 +7,6 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import com.ninive.songsite.features.songs.domain.entities.Song
 
-/**
- * Confirmation dialog shown before deleting a song.
- */
 @Composable
 fun DeleteSongDialog(
     song: Song,

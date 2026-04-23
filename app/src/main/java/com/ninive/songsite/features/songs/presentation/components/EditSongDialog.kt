@@ -14,12 +14,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.ninive.songsite.features.songs.presentation.screens.SongsUiState
 
-/**
- * Dialog for editing an existing song.
- *
- * Per the API contract, only the title is editable via PUT /songs/{id}.
- * Artist and album are read-only (displayed for context only).
- */
 @Composable
 fun EditSongDialog(
     uiState: SongsUiState,
@@ -37,7 +31,6 @@ fun EditSongDialog(
         },
         text = {
             Column {
-                // ── Editable title ────────────────────────────────────────────
                 OutlinedTextField(
                     value = uiState.editTitle,
                     onValueChange = onTitleChange,
@@ -46,7 +39,6 @@ fun EditSongDialog(
                     modifier = Modifier.fillMaxWidth()
                 )
 
-                // ── Read-only context fields ───────────────────────────────────
                 if (song != null) {
                     Spacer(modifier = Modifier.height(12.dp))
                     Text(

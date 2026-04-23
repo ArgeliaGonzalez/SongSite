@@ -26,8 +26,6 @@ class SongsViewModel @Inject constructor(
         loadSongs()
     }
 
-    // ─── Load songs ───────────────────────────────────────────────────────────
-
     fun loadSongs() {
         viewModelScope.launch {
             _uiState.update { it.copy(isLoading = true, error = null) }
@@ -50,8 +48,6 @@ class SongsViewModel @Inject constructor(
         }
     }
 
-    // ─── Search ───────────────────────────────────────────────────────────────
-
     fun onSearchQueryChange(query: String) {
         _uiState.update {
             it.copy(
@@ -71,8 +67,6 @@ class SongsViewModel @Inject constructor(
         }
     }
 
-    // ─── Bottom sheet ─────────────────────────────────────────────────────────
-
     fun onSongOptionsClick(song: Song) {
         _uiState.update { it.copy(selectedSong = song, showBottomSheet = true) }
     }
@@ -81,7 +75,6 @@ class SongsViewModel @Inject constructor(
         _uiState.update { it.copy(showBottomSheet = false, selectedSong = null) }
     }
 
-    // ─── Delete ───────────────────────────────────────────────────────────────
 
     fun onDeleteClick() {
         _uiState.update { it.copy(showBottomSheet = false, showDeleteDialog = true) }
@@ -97,7 +90,6 @@ class SongsViewModel @Inject constructor(
             _uiState.update { it.copy(isLoading = true, showDeleteDialog = false) }
             songsUseCases.deleteSong(song.id).fold(
                 onSuccess = {
-                    // DELETE returns only a message — remove optimistically from local state.
                     _uiState.update { state ->
                         val updatedList = state.songs.filter { it.id != song.id }
                         state.copy(
@@ -117,8 +109,6 @@ class SongsViewModel @Inject constructor(
             )
         }
     }
-
-    // ─── Edit (title only — API constraint) ───────────────────────────────────
 
     fun onEditClick() {
         val song = _uiState.value.selectedSong ?: return
@@ -149,7 +139,6 @@ class SongsViewModel @Inject constructor(
                 albumId = song.albumId
             ).fold(
                 onSuccess = {
-                    // PUT returns only a message — reload the list to get the server's updated data.
                     _uiState.update {
                         it.copy(
                             selectedSong = null,
@@ -167,8 +156,6 @@ class SongsViewModel @Inject constructor(
             )
         }
     }
-
-    // ─── Add: open dialog + load artists (cascade step 1) ────────────────────
 
     fun onAddClick() {
         _uiState.update {
@@ -203,13 +190,10 @@ class SongsViewModel @Inject constructor(
 
     fun onAddTitleChange(value: String) = _uiState.update { it.copy(addTitle = value) }
 
-    // ─── Add: artist selection (cascade step 2) ───────────────────────────────
-
     fun onArtistSelected(artist: Artist) {
         _uiState.update {
             it.copy(
                 selectedArtist = artist,
-                // Reset album selection and list when artist changes
                 selectedAlbum = null,
                 availableAlbums = emptyList(),
                 catalogAlbumError = null
@@ -218,13 +202,10 @@ class SongsViewModel @Inject constructor(
         loadAlbumsForArtist(artist.id)
     }
 
-    // ─── Add: album selection (cascade step 3) ────────────────────────────────
 
     fun onAlbumSelected(album: com.ninive.songsite.features.songs.domain.entities.Album) {
         _uiState.update { it.copy(selectedAlbum = album) }
     }
-
-    // ─── Add: confirm creation ────────────────────────────────────────────────
 
     fun confirmAdd() {
         val state = _uiState.value
@@ -240,8 +221,6 @@ class SongsViewModel @Inject constructor(
                 albumId = albumId
             ).fold(
                 onSuccess = {
-                    // The POST endpoint returns only a message, not the created Song.
-                    // We reload the full list so the new entry appears with all server-resolved fields.
                     _uiState.update { it.copy(operationSuccess = "Canción añadida correctamente") }
                     loadSongs()
                 },
@@ -253,8 +232,6 @@ class SongsViewModel @Inject constructor(
             )
         }
     }
-
-    // ─── Private helpers ─────────────────────────────────────────────────────
 
     private fun loadArtists() {
         viewModelScope.launch {
@@ -297,8 +274,6 @@ class SongsViewModel @Inject constructor(
             )
         }
     }
-
-    // ─── Feedback ─────────────────────────────────────────────────────────────
 
     fun clearError() = _uiState.update { it.copy(error = null) }
     fun clearSuccess() = _uiState.update { it.copy(operationSuccess = null) }

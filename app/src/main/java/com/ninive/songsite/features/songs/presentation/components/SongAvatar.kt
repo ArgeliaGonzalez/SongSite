@@ -13,9 +13,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 
-/**
- * Circular avatar showing the first letter of the song title.
- */
 @Composable
 fun SongAvatar(
     title: String,

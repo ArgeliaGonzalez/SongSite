@@ -22,19 +22,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.ninive.songsite.features.songs.domain.entities.Artist
 
-/**
- * Exposed dropdown selector for choosing an Artist from the catalog.
- *
- * Displays a loading indicator while artists are being fetched.
- * Shows an error label below the field if the catalog fetch failed.
- *
- * @param artists         Available artists from the catalog.
- * @param selectedArtist  Currently selected artist, or null if none.
- * @param isLoading       True while the catalog is being fetched.
- * @param errorMessage    Non-null if the catalog fetch failed.
- * @param onArtistSelected Callback invoked when the user picks an artist.
- * @param modifier        Optional modifier.
- */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ArtistDropdown(

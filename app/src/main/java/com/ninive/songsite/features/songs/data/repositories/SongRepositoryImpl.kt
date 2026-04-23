@@ -8,10 +8,6 @@ import com.ninive.songsite.features.songs.domain.entities.Song
 import com.ninive.songsite.features.songs.domain.repositories.SongRepository
 import javax.inject.Inject
 
-/**
- * Implementation of [SongRepository].
- * Builds the correct DTOs and delegates all network calls to [SongsApi].
- */
 class SongRepositoryImpl @Inject constructor(
     private val api: SongsApi
 ) : SongRepository {

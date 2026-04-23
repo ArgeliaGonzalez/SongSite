@@ -7,10 +7,6 @@ import com.ninive.songsite.features.songs.domain.entities.Artist
 import com.ninive.songsite.features.songs.domain.repositories.CatalogRepository
 import javax.inject.Inject
 
-/**
- * Implementation of [CatalogRepository].
- * Delegates network calls to [CatalogApi] and maps results to domain entities.
- */
 class CatalogRepositoryImpl @Inject constructor(
     private val catalogApi: CatalogApi
 ) : CatalogRepository {

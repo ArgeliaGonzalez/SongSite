@@ -54,7 +54,6 @@ fun SongsScreen(
     val snackbarHostState = remember { SnackbarHostState() }
     val bottomSheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
 
-    // Show error messages via Snackbar
     LaunchedEffect(uiState.error) {
         uiState.error?.let {
             snackbarHostState.showSnackbar(it)
@@ -62,7 +61,6 @@ fun SongsScreen(
         }
     }
 
-    // Show success messages via Snackbar
     LaunchedEffect(uiState.operationSuccess) {
         uiState.operationSuccess?.let {
             snackbarHostState.showSnackbar(it)
@@ -117,7 +115,6 @@ fun SongsScreen(
             modifier = Modifier.padding(paddingValues)
         )
 
-        // ─── Bottom sheet ──────────────────────────────────────────────────
         if (uiState.showBottomSheet && uiState.selectedSong != null) {
             SongOptionsBottomSheet(
                 song = uiState.selectedSong!!,
@@ -128,7 +125,6 @@ fun SongsScreen(
             )
         }
 
-        // ─── Delete dialog ─────────────────────────────────────────────────
         if (uiState.showDeleteDialog && uiState.selectedSong != null) {
             DeleteSongDialog(
                 song = uiState.selectedSong!!,
@@ -137,7 +133,6 @@ fun SongsScreen(
             )
         }
 
-        // ─── Edit dialog (title-only) ──────────────────────────────────────
         if (uiState.showEditDialog && uiState.selectedSong != null) {
             EditSongDialog(
                 uiState = uiState,
@@ -147,7 +142,6 @@ fun SongsScreen(
             )
         }
 
-        // ─── Add dialog (cascade: artist → album) ─────────────────────────
         if (uiState.showAddDialog) {
             AddSongDialog(
                 uiState = uiState,
@@ -160,8 +154,6 @@ fun SongsScreen(
         }
     }
 }
-
-// ─── Screen content (stateless) ───────────────────────────────────────────────
 
 @Composable
 private fun SongsScreenContent(
@@ -234,7 +226,7 @@ private fun SongsScreenContent(
 
             else -> {
                 LazyColumn(
-                    contentPadding = PaddingValues(bottom = 88.dp), // FAB clearance
+                    contentPadding = PaddingValues(bottom = 88.dp),
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     items(

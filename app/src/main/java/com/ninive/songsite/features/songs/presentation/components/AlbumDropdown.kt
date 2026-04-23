@@ -20,20 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.ninive.songsite.features.songs.domain.entities.Album
 
-/**
- * Exposed dropdown selector for choosing an Album from the catalog.
- *
- * The dropdown is disabled ([enabled] = false) until a valid artist has been selected
- * and albums have been successfully fetched. This enforces the cascade UX contract.
- *
- * @param albums          Available albums for the currently selected artist.
- * @param selectedAlbum   Currently selected album, or null.
- * @param isLoading       True while albums are being fetched.
- * @param enabled         False until an artist is selected and albums are loaded.
- * @param errorMessage    Non-null if the album fetch failed.
- * @param onAlbumSelected Callback when the user picks an album.
- * @param modifier        Optional modifier.
- */
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AlbumDropdown(

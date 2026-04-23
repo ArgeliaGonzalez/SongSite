@@ -3,12 +3,7 @@ package com.ninive.songsite.features.songs.domain.usecases
 import com.ninive.songsite.features.songs.domain.repositories.SongRepository
 import javax.inject.Inject
 
-/**
- * Use case: create a new song in the user's favorites.
- *
- * Validates that [titulo] is not blank and that [artistaId] / [albumId]
- * are positive integers before delegating to the repository.
- */
+
 class CreateSongUseCase @Inject constructor(
     private val repository: SongRepository
 ) {

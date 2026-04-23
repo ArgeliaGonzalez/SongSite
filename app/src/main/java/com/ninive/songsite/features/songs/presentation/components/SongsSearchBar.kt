@@ -14,9 +14,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
-/**
- * Search bar for filtering songs by title or artist.
- */
 @Composable
 fun SongsSearchBar(
     query: String,

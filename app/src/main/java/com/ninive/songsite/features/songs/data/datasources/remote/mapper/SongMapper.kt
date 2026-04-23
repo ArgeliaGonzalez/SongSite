@@ -9,7 +9,6 @@ import com.ninive.songsite.features.songs.domain.entities.Album
 import com.ninive.songsite.features.songs.domain.entities.Artist
 import com.ninive.songsite.features.songs.domain.entities.Song
 
-// ─── Song mappers ────────────────────────────────────────────────────────────
 
 fun SongDto.toDomain(): Song = Song(
     id           = id,
@@ -26,9 +25,6 @@ fun Song.toCreateDto(): CreateSongRequestDto = CreateSongRequestDto(
     albumId   = albumId
 )
 
-
-
-// ─── Catalog mappers ──────────────────────────────────────────────────────────
 
 fun ArtistDto.toDomain(): Artist = Artist(id = id, nombre = nombre)
 

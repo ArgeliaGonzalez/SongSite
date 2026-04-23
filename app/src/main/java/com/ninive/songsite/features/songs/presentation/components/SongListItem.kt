@@ -20,10 +20,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.ninive.songsite.features.songs.domain.entities.Song
 
-/**
- * A single row representing one song in the list.
- * Displays avatar, title, artist, and a three-dot options button.
- */
 @Composable
 fun SongListItem(
     song: Song,

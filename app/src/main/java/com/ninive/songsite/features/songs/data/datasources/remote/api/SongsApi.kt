@@ -10,12 +10,7 @@ import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Path
 
-/**
- * Retrofit interface for the Songs feature endpoints.
- *
- * POST body for creation: { "titulo": String, "artistaId": Int, "albumId": Int }
- * PUT body for update:    { "titulo": String }
- */
+
 interface SongsApi {
 
     @GET("songs")
